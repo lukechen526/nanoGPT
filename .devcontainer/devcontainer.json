@@ -1,0 +1,61 @@
+{
+    "name": "PyTorch Development",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "hostRequirements": {
+        "gpu": "optional"
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {
+            "installZsh": "true",
+            "username": "vscode",
+            "userUid": "1000",
+            "userGid": "1000",
+            "upgradePackages": "true",
+            "configureZshAsDefaultShell": "true"
+        },
+        "ghcr.io/devcontainers/features/git:1": {
+            "version": "latest",
+            "ppa": "false"
+        },
+        "ghcr.io/devcontainers/features/nvidia-cuda:1": {
+            "version": "12.6"
+        },
+        "ghcr.io/devcontainers/features/python:1": {
+            "version": "3.12",
+            "installJupyterlab": true
+        }
+    },
+    "runArgs": [
+        "--gpus=all",
+        "--ipc=host"
+    ],
+    "containerEnv": {
+        "NVIDIA_VISIBLE_DEVICES": "all"
+    },
+    "postCreateCommand": "pip3 install --user -r requirements.txt",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "ms-python.vscode-pylance",
+                "visualstudioexptteam.vscodeintellicode",
+                "ms-azuretools.vscode-docker",
+                "tensorflow.tensorboard",
+                "ms-python.autopep8",
+                "ms-python.pylint"
+            ],
+            "settings": {
+                "python.languageServer": "Pylance",
+                "python.linting.enabled": true,
+                "python.linting.pylintEnabled": true,
+                "python.formatting.provider": "autopep8",
+                "python.analysis.autoSearchPaths": true,
+                "python.analysis.useLibraryCodeForTypes": true
+            }
+        }
+    },
+    "remoteUser": "vscode"
+}

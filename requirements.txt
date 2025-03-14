@@ -1,0 +1,16 @@
+jupyterlab
+tensorboard
+torch-tb-profiler
+matplotlib
+pandas
+scikit-learn
+numpy
+graphviz
+torchviz
+torch==2.6.0
+torchvision
+tqdm
+ipywidgets
+datasets
+tiktoken
+wandb
